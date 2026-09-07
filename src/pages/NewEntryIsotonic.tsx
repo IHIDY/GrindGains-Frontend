@@ -1,0 +1,72 @@
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { useLogEntry } from "../api/hooks"
+import type { Movement } from "../api/types"
+import { FormField, TextInput } from "../components/forms/FormField"
+import { BackArrowIcon } from "../components/icons"
+import { PageShell } from "../components/layout/PageShell"
+import { ModeBadge } from "../components/workouts/ModeBadge"
+
+export function NewEntryIsotonic({ movement }: { movement: Movement }) {
+  const navigate = useNavigate()
+  const { logEntry, isSubmitting, error } = useLogEntry()
+  const [weight, setWeight] = useState("")
+  const [reps, setReps] = useState("")
+  const [sets, setSets] = useState("1")
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    await logEntry({
+      movementId: movement.id,
+      mode: "isotonic",
+      weight: Number(weight),
+      repsOrTime: Number(reps),
+      sets: Number(sets) || 1,
+    })
+    navigate(`/workouts/${movement.id}`)
+  }
+
+  return (
+    <PageShell>
+      <div className="flex flex-col items-center gap-6">
+        <div className="flex w-[640px] items-center gap-3.5">
+          <Link to={`/workouts/${movement.id}`} className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[10px] border border-border">
+            <BackArrowIcon />
+          </Link>
+          <div className="flex flex-col gap-0.5">
+            <div className="text-xl font-semibold text-ink">Log a Set</div>
+            <div className="flex items-center gap-2">
+              <div className="text-[13px] text-muted">{movement.displayName}</div>
+              <ModeBadge mode="isotonic" size="lg" />
+            </div>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="flex w-[640px] flex-col gap-6 rounded-2xl border border-border bg-card p-8">
+          <div className="grid grid-cols-2 gap-4">
+            <FormField label="Weight (lb)">
+              <TextInput type="number" required min={0} step="any" value={weight} onChange={(e) => setWeight(e.target.value)} />
+            </FormField>
+            <FormField label="Reps">
+              <TextInput type="number" required min={1} value={reps} onChange={(e) => setReps(e.target.value)} />
+            </FormField>
+          </div>
+
+          <FormField label="Number of sets" helperText="All sets share this same weight and rep count.">
+            <TextInput type="number" required min={1} value={sets} onChange={(e) => setSets(e.target.value)} />
+          </FormField>
+
+          {error && <div className="text-sm text-[#B91C1C]">{error}</div>}
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="rounded-[10px] bg-isotonic px-5 py-3.5 text-[15px] font-semibold text-white disabled:opacity-60"
+          >
+            {isSubmitting ? "Saving…" : "Save Set"}
+          </button>
+        </form>
+      </div>
+    </PageShell>
+  )
+}

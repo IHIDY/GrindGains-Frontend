@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Fredoka", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-cream: #fdf6ea;
+  --color-card: #ffffff;
+  --color-card-alt: #fbfbf6;
+
+  --color-ink: #4a4438;
+  --color-muted: #7d7261;
+  --color-faint: #9a8f7c;
+
+  --color-border: #c9bda6;
+  --color-border-light: #b3a78f;
+
+  --color-isotonic: #2e6b42;
+  --color-isotonic-dark: #2b5039;
+  --color-isotonic-light: #3e8352;
+  --color-isotonic-tint: #e4f0e6;
+
+  --color-mobeta: #d99a36;
+  --color-mobeta-dark: #b8811f;
+  --color-mobeta-tint: #f6e8cc;
+
+  --color-accent: #6f9445;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-faint);
+}
