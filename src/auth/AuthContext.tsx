@@ -16,7 +16,12 @@ interface AuthContextValue {
    */
   getToken: () => Promise<string | null>
   login: (email: string, password: string) => Promise<void>
-  signup: (email: string, password: string, inviteCode: string) => Promise<void>
+  /** Registers the user only — Cognito requires email verification before login works, see confirmSignup. */
+  signup: (email: string, password: string, inviteCode: string, username: string) => Promise<void>
+  confirmSignup: (email: string, code: string) => Promise<void>
+  resendConfirmationCode: (email: string) => Promise<void>
+  getUsername: () => Promise<string | null>
+  updateUsername: (username: string) => Promise<void>
   logout: () => void
 }
 
@@ -38,10 +43,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setStatus("authenticated")
   }, [])
 
-  const signup = useCallback(async (email: string, password: string, inviteCode: string) => {
-    await cognito.signup(email, password, inviteCode)
-    await login(email, password)
-  }, [login])
+  const signup = useCallback(async (email: string, password: string, inviteCode: string, username: string) => {
+    await cognito.signup(email, password, inviteCode, username)
+  }, [])
+
+  const confirmSignup = useCallback((email: string, code: string) => cognito.confirmSignup(email, code), [])
+
+  const resendConfirmationCode = useCallback((email: string) => cognito.resendConfirmationCode(email), [])
+
+  const getUsername = useCallback(() => cognito.getUsername(), [])
+
+  const updateUsername = useCallback((username: string) => cognito.updateUsername(username), [])
 
   const logout = useCallback(() => {
     cognito.logout()
@@ -49,8 +61,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const value = useMemo(
-    () => ({ status, isAuthenticated: status === "authenticated", getToken, login, signup, logout }),
-    [status, getToken, login, signup, logout],
+    () => ({
+      status,
+      isAuthenticated: status === "authenticated",
+      getToken,
+      login,
+      signup,
+      confirmSignup,
+      resendConfirmationCode,
+      getUsername,
+      updateUsername,
+      logout,
+    }),
+    [status, getToken, login, signup, confirmSignup, resendConfirmationCode, getUsername, updateUsername, logout],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

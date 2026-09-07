@@ -86,25 +86,25 @@ export function XYChart<T extends Record<string, unknown>>({
   return (
     <ResponsiveContainer width="100%" height={height}>
       <ComposedChart data={data} margin={compact ? { top: 4, right: 4, bottom: 0, left: 4 } : { top: 8, right: 8, bottom: 8, left: 8 }}>
-        {showGrid && <CartesianGrid stroke="#C9BDA6" strokeOpacity={0.4} vertical={false} />}
+        {showGrid && <CartesianGrid stroke="#C17A4A" strokeOpacity={0.22} vertical={false} />}
         {showAxes && (
           <XAxis
             dataKey={xKey as any}
             tickFormatter={labelFormatter}
-            tick={{ fontSize: 11, fill: "#9A8F7C" }}
-            axisLine={{ stroke: "#B3A78F" }}
+            tick={{ fontSize: 11, fill: "#B36A46" }}
+            axisLine={{ stroke: "#B36A46" }}
             tickLine={false}
-            label={xLabel ? { value: xLabel, position: "insideBottom", offset: -4, fontSize: 12, fill: "#7D7261" } : undefined}
+            label={xLabel ? { value: xLabel, position: "insideBottom", offset: -4, fontSize: 12, fill: "#8B4F35" } : undefined}
           />
         )}
         {showAxes && (
           <YAxis
             dataKey={yKey as any}
-            tick={{ fontSize: 11, fill: "#9A8F7C" }}
+            tick={{ fontSize: 11, fill: "#B36A46" }}
             axisLine={false}
             tickLine={false}
             width={40}
-            label={yLabel ? { value: yLabel, angle: -90, position: "insideLeft", fontSize: 12, fill: "#7D7261" } : undefined}
+            label={yLabel ? { value: yLabel, angle: -90, position: "insideLeft", fontSize: 12, fill: "#8B4F35" } : undefined}
           />
         )}
         {!compact && (

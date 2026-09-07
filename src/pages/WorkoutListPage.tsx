@@ -6,26 +6,10 @@ import { PageShell } from "../components/layout/PageShell"
 import { PlusIcon } from "../components/icons"
 import { WorkoutCard } from "../components/workouts/WorkoutCard"
 
-function NewWorkoutPrompt() {
+function NewWorkoutForm({ onClose }: { onClose: () => void }) {
   const navigate = useNavigate()
-  const [open, setOpen] = useState(false)
   const [movementId, setMovementId] = useState("")
   const [mode, setMode] = useState<Mode>("isotonic")
-
-  if (!open) {
-    return (
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="col-span-2 flex min-h-[88px] items-center justify-center gap-3.5 rounded-3xl border border-dashed border-border text-faint"
-      >
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-isotonic-tint">
-          <PlusIcon size={18} color="#6F9445" />
-        </div>
-        <div className="text-sm font-medium">Start a new workout</div>
-      </button>
-    )
-  }
 
   return (
     <form
@@ -35,9 +19,9 @@ function NewWorkoutPrompt() {
         if (!id) return
         navigate(`/workouts/${id}/log?mode=${mode}`)
       }}
-      className="col-span-2 flex flex-wrap items-end gap-4 rounded-3xl border border-border bg-card p-6"
+      className="flex flex-wrap items-end gap-4 rounded-3xl border border-border bg-card p-6"
     >
-      <div className="flex flex-1 min-w-[200px] flex-col gap-2">
+      <div className="flex min-w-[200px] flex-1 flex-col gap-2">
         <label className="text-[13px] font-medium text-muted">Movement name</label>
         <input
           autoFocus
@@ -61,7 +45,7 @@ function NewWorkoutPrompt() {
       <button type="submit" className="rounded-[10px] bg-isotonic px-5 py-2.5 text-sm font-semibold text-white">
         Start
       </button>
-      <button type="button" onClick={() => setOpen(false)} className="text-sm text-faint">
+      <button type="button" onClick={onClose} className="text-sm text-faint">
         Cancel
       </button>
     </form>
@@ -70,6 +54,7 @@ function NewWorkoutPrompt() {
 
 export function WorkoutListPage() {
   const { movements, status } = useMovementsList()
+  const [showNewWorkout, setShowNewWorkout] = useState(false)
 
   return (
     <PageShell>
@@ -80,7 +65,17 @@ export function WorkoutListPage() {
             {status === "success" ? `${movements.length} workouts` : "Loading…"}
           </div>
         </div>
+        <button
+          type="button"
+          onClick={() => setShowNewWorkout((v) => !v)}
+          className="flex items-center gap-2 rounded-[10px] bg-isotonic px-5 py-3 text-sm font-semibold text-white"
+        >
+          <PlusIcon size={16} />
+          New Workout
+        </button>
       </div>
+
+      {showNewWorkout && <NewWorkoutForm onClose={() => setShowNewWorkout(false)} />}
 
       {status === "loading" && <div className="text-sm text-faint">Loading your workouts…</div>}
       {status === "error" && <div className="text-sm text-[#B91C1C]">Couldn't load your workouts. Try refreshing.</div>}
@@ -90,7 +85,6 @@ export function WorkoutListPage() {
           {movements.map((summary, i) => (
             <WorkoutCard key={summary.movement.id} summary={summary} rotationIndex={i} />
           ))}
-          <NewWorkoutPrompt />
         </div>
       )}
     </PageShell>

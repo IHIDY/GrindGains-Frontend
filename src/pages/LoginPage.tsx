@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../auth/AuthContext"
 import { TextInput } from "../components/forms/FormField"
-import { LeafSprig, LogoMark } from "../components/icons"
+import { LogoMark } from "../components/icons"
 
 export function LoginPage() {
   const { login } = useAuth()
@@ -33,10 +33,9 @@ export function LoginPage() {
         className="flex w-[440px] flex-col gap-8 rounded-[20px] border border-border bg-card px-10 py-11 shadow-[0_20px_48px_rgba(74,68,56,0.10)]"
       >
         <div className="flex flex-col items-center gap-3.5">
-          <LeafSprig />
           <div className="flex items-center gap-2.5">
             <LogoMark size={28} />
-            <span className="text-[22px] font-bold text-isotonic">TrainingGPT</span>
+            <span className="text-[22px] font-bold text-isotonic">GrindGains</span>
           </div>
           <div className="flex flex-col items-center gap-1.5 text-center">
             <div className="text-[22px] font-semibold text-ink">Welcome back</div>

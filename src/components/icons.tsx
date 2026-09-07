@@ -10,16 +10,6 @@ export function LogoMark({ size = 24 }: { size?: number }) {
   )
 }
 
-export function LeafSprig() {
-  return (
-    <svg width="44" height="26" viewBox="0 0 40 24" fill="none">
-      <path d="M2 20c8-2 14-8 16-18" stroke="#6F9445" strokeWidth="1.6" strokeLinecap="round" fill="none" />
-      <path d="M8 14c2-3 5-4 8-3" stroke="#6F9445" strokeWidth="1.4" strokeLinecap="round" fill="none" />
-      <path d="M5 18c2-2 4-3 6-3" stroke="#6F9445" strokeWidth="1.4" strokeLinecap="round" fill="none" />
-    </svg>
-  )
-}
-
 export function DumbbellIcon({ size = 26, color = "#2E6B42" }: { size?: number; color?: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
