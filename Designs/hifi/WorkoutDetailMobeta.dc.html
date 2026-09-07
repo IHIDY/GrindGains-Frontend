@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #2E6B42; text-decoration: none; }
+    a:hover { color: #3E8352; }
+  </style>
+</helmet>
+
+<div style="width:1440px; height:960px; background:#FDF6EA; font-family:'Fredoka', system-ui, -apple-system, 'Segoe UI', sans-serif; color:#4A4438; display:flex; flex-direction:column;">
+
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:20px 48px; border-bottom:1px solid #C9BDA6;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="9" width="3" height="6" rx="1" fill="#2E6B42"/>
+        <rect x="19" y="9" width="3" height="6" rx="1" fill="#2E6B42"/>
+        <rect x="5" y="7" width="2.5" height="10" rx="1" fill="#6F9445"/>
+        <rect x="16.5" y="7" width="2.5" height="10" rx="1" fill="#6F9445"/>
+        <rect x="7.5" y="11" width="9" height="2" rx="1" fill="#7D7261"/>
+      </svg>
+      <div style="font-weight:700; font-size:20px; color:#2E6B42;">TrainingGPT</div>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px;">
+      <a href="#" style="color:#7D7261; font-size:14px; font-weight:500;">Workouts</a>
+      <div style="width:36px; height:36px; border-radius:999px; background:#E4F0E6; border:1px solid #C9BDA6; display:flex; align-items:center; justify-content:center; color:#7D7261; font-size:13px; font-weight:600;">JL</div>
+    </div>
+  </div>
+
+  <div style="flex:1; display:flex; flex-direction:column; gap:28px; padding:36px 48px;">
+
+    <div style="display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <a href="#" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:10px; border:1px solid #C9BDA6; color:#7D7261;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#7D7261" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div style="display:flex; flex-direction:column; gap:4px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="font-size:24px; font-weight:600; color:#4A4438;">Plank Series</div>
+            <div style="font-size:11px; font-weight:600; padding:4px 10px; border-radius:999px; background:rgba(217,154,54,0.16); color:#B8811F; border:1px solid rgba(217,154,54,0.4);">MOBETA</div>
+          </div>
+          <div style="font-size:13px; color:#7D7261;">6 holds logged &middot; last hold Mar 5</div>
+        </div>
+      </div>
+      <button style="background:#B8811F; color:#ffffff; border:none; border-radius:10px; padding:12px 20px; font-size:14px; font-weight:600; font-family:inherit; cursor:pointer; display:flex; align-items:center; gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+        Log Hold
+      </button>
+    </div>
+
+    <div style="background:#FFFFFF; border:1px solid #C9BDA6; border-radius:16px; padding:24px 28px; display:flex; flex-direction:column; gap:16px;">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div style="font-size:15px; font-weight:600;">Hold Time vs. Added Weight</div>
+        <div style="font-size:12px; color:#9A8F7C;">All logged holds</div>
+      </div>
+      <svg viewBox="0 0 1000 300" width="100%" height="300" style="overflow:visible;">
+        <line x1="60" y1="10" x2="60" y2="260" stroke="#B3A78F" stroke-width="1.5"/>
+        <line x1="60" y1="260" x2="960" y2="260" stroke="#B3A78F" stroke-width="1.5"/>
+        <line x1="60" y1="80" x2="960" y2="80" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+        <line x1="60" y1="150" x2="960" y2="150" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+        <line x1="60" y1="220" x2="960" y2="220" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+
+        <text x="16" y="46" fill="#9A8F7C" font-size="12" font-family="Fredoka, sans-serif">120s</text>
+        <text x="16" y="156" fill="#9A8F7C" font-size="12" font-family="Fredoka, sans-serif">60s</text>
+        <text x="16" y="224" fill="#9A8F7C" font-size="12" font-family="Fredoka, sans-serif">20s</text>
+        <text x="60" y="284" fill="#9A8F7C" font-size="12" font-family="Fredoka, sans-serif">0 lb</text>
+        <text x="960" y="284" fill="#9A8F7C" font-size="12" font-family="Fredoka, sans-serif" text-anchor="end">45 lb</text>
+        <text x="510" y="284" fill="#7D7261" font-size="12" font-family="Fredoka, sans-serif" text-anchor="middle">Weight (lb)</text>
+
+        <path d="M90,42 C 260,90 420,150 600,190 S 860,235 930,246" fill="none" stroke="#D99A36" stroke-width="2" stroke-linecap="round"/>
+
+        <circle cx="95" cy="40" r="5" fill="#D99A36" opacity="0.85"/>
+        <circle cx="150" cy="58" r="5" fill="#D99A36" opacity="0.85"/>
+        <circle cx="230" cy="92" r="5" fill="#D99A36" opacity="0.85"/>
+        <circle cx="310" cy="108" r="5" fill="#D99A36" opacity="0.85"/>
+        <circle cx="400" cy="140" r="5" fill="#D99A36" opacity="0.85"/>
+        <circle cx="470" cy="162" r="6.5" fill="#FFFFFF" stroke="#D99A36" stroke-width="2"/>
+        <circle cx="560" cy="178" r="5" fill="#D99A36" opacity="0.85"/>
+        <circle cx="640" cy="196" r="5" fill="#D99A36" opacity="0.85"/>
+        <circle cx="720" cy="212" r="5" fill="#D99A36" opacity="0.85"/>
+        <circle cx="800" cy="228" r="5" fill="#D99A36" opacity="0.85"/>
+        <circle cx="880" cy="238" r="5" fill="#D99A36" opacity="0.85"/>
+        <circle cx="930" cy="246" r="5" fill="#D99A36" opacity="0.85"/>
+
+        <line x1="470" y1="10" x2="470" y2="260" stroke="#B3A78F" stroke-width="1" stroke-dasharray="3,3"/>
+        <g transform="translate(486,18)">
+          <rect width="128" height="42" rx="8" fill="#E4F0E6" stroke="#C9BDA6"/>
+          <text x="12" y="17" fill="#7D7261" font-size="11" font-family="Fredoka, sans-serif">22.5 lb added</text>
+          <text x="12" y="33" fill="#4A4438" font-size="13" font-weight="600" font-family="Fredoka, sans-serif">Held 64s</text>
+        </g>
+      </svg>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+
+      <div style="background:#FFFFFF; border:1px solid #C9BDA6; border-radius:16px; padding:22px 24px; display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <div style="font-size:14px; font-weight:600;">Avg. Hold Time by Day</div>
+          <div style="font-size:12px; color:#9A8F7C;">Last 6 sessions</div>
+        </div>
+        <svg viewBox="0 0 560 160" width="100%" height="160" style="overflow:visible;">
+          <line x1="0" y1="8" x2="560" y2="8" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <line x1="0" y1="56" x2="560" y2="56" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <line x1="0" y1="104" x2="560" y2="104" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <line x1="0" y1="140" x2="560" y2="140" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <path d="M20,120 L130,100 L240,108 L350,68 L460,52 L540,34" fill="none" stroke="#2E6B42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="120" r="4" fill="#2E6B42"/>
+          <circle cx="130" cy="100" r="4" fill="#2E6B42"/>
+          <circle cx="240" cy="108" r="4" fill="#2E6B42"/>
+          <circle cx="350" cy="68" r="4" fill="#2E6B42"/>
+          <circle cx="460" cy="52" r="4" fill="#2E6B42"/>
+          <circle cx="540" cy="34" r="5.5" fill="#FFFFFF" stroke="#2E6B42" stroke-width="2"/>
+          <text x="20" y="156" fill="#9A8F7C" font-size="11" font-family="Fredoka, sans-serif">Feb 22</text>
+          <text x="540" y="156" fill="#9A8F7C" font-size="11" font-family="Fredoka, sans-serif" text-anchor="end">Mar 5</text>
+        </svg>
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid #C9BDA6; border-radius:16px; padding:22px 24px; display:flex; flex-direction:column; gap:16px; justify-content:center;">
+        <div style="font-size:14px; font-weight:600; color:#4A4438;">Personal Best</div>
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <div style="font-size:44px; font-weight:600; color:#B8811F; font-variant-numeric:tabular-nums;">87s</div>
+          <div style="font-size:13px; color:#9A8F7C;">at 15 lb added &middot; Feb 28</div>
+        </div>
+        <svg viewBox="0 0 300 44" width="180" height="44">
+          <path d="M0,34 L40,30 L80,32 L120,20 L160,22 L200,10 L240,14 L300,4" fill="none" stroke="#D99A36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

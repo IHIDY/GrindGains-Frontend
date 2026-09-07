@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #2E6B42; text-decoration: none; }
+    a:hover { color: #3E8352; }
+  </style>
+</helmet>
+
+<div style="width:1440px; height:1320px; background:#FDF6EA; font-family:'Fredoka', system-ui, -apple-system, 'Segoe UI', sans-serif; color:#4A4438; display:flex; flex-direction:column;">
+
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:20px 48px; border-bottom:1px solid #C9BDA6;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="9" width="3" height="6" rx="1" fill="#2E6B42"/>
+        <rect x="19" y="9" width="3" height="6" rx="1" fill="#2E6B42"/>
+        <rect x="5" y="7" width="2.5" height="10" rx="1" fill="#6F9445"/>
+        <rect x="16.5" y="7" width="2.5" height="10" rx="1" fill="#6F9445"/>
+        <rect x="7.5" y="11" width="9" height="2" rx="1" fill="#7D7261"/>
+      </svg>
+      <div style="font-weight:700; font-size:20px; color:#2E6B42;">TrainingGPT</div>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px;">
+      <a href="#" style="color:#4A4438; font-size:14px; font-weight:600;">Workouts</a>
+      <div style="width:36px; height:36px; border-radius:999px; background:#E4F0E6; border:1px solid #C9BDA6; display:flex; align-items:center; justify-content:center; color:#7D7261; font-size:13px; font-weight:600;">JL</div>
+    </div>
+  </div>
+
+  <div style="flex:1; display:flex; flex-direction:column; gap:28px; padding:40px 48px;">
+    <div style="display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <div style="font-size:26px; font-weight:600; color:#4A4438;">Your Workouts</div>
+        <div style="font-size:14px; color:#7D7261;">6 workouts &middot; 2 in progress this week</div>
+      </div>
+      <button style="background:#2E6B42; color:#ffffff; border:none; border-radius:10px; padding:12px 20px; font-size:14px; font-weight:600; font-family:inherit; cursor:pointer; display:flex; align-items:center; gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+        New Workout
+      </button>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:22px;">
+
+      <div style="background:#FFFFFF; border:1px solid #E4F0E6; border-radius:24px; padding:26px; display:flex; flex-direction:column; gap:18px; box-shadow:0 12px 26px rgba(74,68,56,0.07);">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="width:60px; height:60px; border-radius:18px; background:#E4F0E6; display:flex; align-items:center; justify-content:center; flex-shrink:0; transform:rotate(-6deg);">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="9" width="3.4" height="6" rx="1.7" fill="#2E6B42"/>
+              <rect x="18.6" y="9" width="3.4" height="6" rx="1.7" fill="#2E6B42"/>
+              <rect x="5.6" y="7.2" width="2.6" height="9.6" rx="1.3" fill="#2E6B42"/>
+              <rect x="15.8" y="7.2" width="2.6" height="9.6" rx="1.3" fill="#2E6B42"/>
+              <rect x="8.2" y="11" width="7.6" height="2" rx="1" fill="#2E6B42"/>
+            </svg>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; flex:1;">
+            <div style="font-size:19px; font-weight:600; color:#4A4438;">Push Day</div>
+            <div style="display:inline-flex; width:fit-content; font-size:11px; font-weight:600; padding:3px 10px; border-radius:999px; background:#E4F0E6; color:#2E6B42;">Isotonic</div>
+          </div>
+          <div style="font-size:12px; color:#9A8F7C; text-align:right;">Last logged<br>Mar 6</div>
+        </div>
+        <div style="background:#FBFBF6; border:1px solid #E4F0E6; border-radius:16px; padding:14px 18px 10px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;">
+            <div style="font-size:11px; color:#9A8F7C; font-weight:600; text-transform:uppercase; letter-spacing:0.04em;">Volume &middot; last 7</div>
+            <div style="font-size:13px; color:#2E6B42; font-weight:600;">5,920 lb</div>
+          </div>
+          <svg viewBox="0 0 600 90" width="100%" height="80" style="display:block;">
+            <path d="M10,78 L110,66 L200,70 L300,46 L390,40 L480,22 L580,14 L580,90 L10,90 Z" fill="rgba(46,107,66,0.10)"/>
+            <path d="M10,78 L110,66 L200,70 L300,46 L390,40 L480,22 L580,14" fill="none" stroke="#2E6B42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="580" cy="14" r="4" fill="#2E6B42"/>
+          </svg>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid #F6E8CC; border-radius:24px; padding:26px; display:flex; flex-direction:column; gap:18px; box-shadow:0 12px 26px rgba(74,68,56,0.07);">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="width:60px; height:60px; border-radius:18px; background:#F6E8CC; display:flex; align-items:center; justify-content:center; flex-shrink:0; transform:rotate(5deg);">
+            <svg width="27" height="27" viewBox="0 0 24 24" fill="none">
+              <path d="M7 4h10M7 20h10" stroke="#B8811F" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 4c0 4.5 3 6 4 7 1-1 4-2.5 4-7M8 20c0-4.5 3-6 4-7 1 1 4 2.5 4 7" stroke="#B8811F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; flex:1;">
+            <div style="font-size:19px; font-weight:600; color:#4A4438;">Plank Series</div>
+            <div style="display:inline-flex; width:fit-content; font-size:11px; font-weight:600; padding:3px 10px; border-radius:999px; background:#F6E8CC; color:#B8811F;">Mobeta</div>
+          </div>
+          <div style="font-size:12px; color:#9A8F7C; text-align:right;">Last logged<br>Mar 5</div>
+        </div>
+        <div style="background:#FBFBF6; border:1px solid #F6E8CC; border-radius:16px; padding:14px 18px 10px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;">
+            <div style="font-size:11px; color:#9A8F7C; font-weight:600; text-transform:uppercase; letter-spacing:0.04em;">Hold time &middot; last 6</div>
+            <div style="font-size:13px; color:#B8811F; font-weight:600;">64s</div>
+          </div>
+          <svg viewBox="0 0 600 90" width="100%" height="80" style="display:block;">
+            <path d="M10,80 L120,66 L230,72 L340,46 L450,36 L580,18 L580,90 L10,90 Z" fill="rgba(217,154,54,0.12)"/>
+            <path d="M10,80 L120,66 L230,72 L340,46 L450,36 L580,18" fill="none" stroke="#D99A36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="580" cy="18" r="4" fill="#D99A36"/>
+          </svg>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid #E4F0E6; border-radius:24px; padding:26px; display:flex; flex-direction:column; gap:18px; box-shadow:0 12px 26px rgba(74,68,56,0.07);">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="width:60px; height:60px; border-radius:18px; background:#E4F0E6; display:flex; align-items:center; justify-content:center; flex-shrink:0; transform:rotate(4deg);">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="9" width="3.4" height="6" rx="1.7" fill="#2E6B42"/>
+              <rect x="18.6" y="9" width="3.4" height="6" rx="1.7" fill="#2E6B42"/>
+              <rect x="5.6" y="7.2" width="2.6" height="9.6" rx="1.3" fill="#2E6B42"/>
+              <rect x="15.8" y="7.2" width="2.6" height="9.6" rx="1.3" fill="#2E6B42"/>
+              <rect x="8.2" y="11" width="7.6" height="2" rx="1" fill="#2E6B42"/>
+            </svg>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; flex:1;">
+            <div style="font-size:19px; font-weight:600; color:#4A4438;">Leg Day</div>
+            <div style="display:inline-flex; width:fit-content; font-size:11px; font-weight:600; padding:3px 10px; border-radius:999px; background:#E4F0E6; color:#2E6B42;">Isotonic</div>
+          </div>
+          <div style="font-size:12px; color:#9A8F7C; text-align:right;">Last logged<br>Mar 4</div>
+        </div>
+        <div style="background:#FBFBF6; border:1px solid #E4F0E6; border-radius:16px; padding:14px 18px 10px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;">
+            <div style="font-size:11px; color:#9A8F7C; font-weight:600; text-transform:uppercase; letter-spacing:0.04em;">Volume &middot; last 7</div>
+            <div style="font-size:13px; color:#2E6B42; font-weight:600;">7,140 lb</div>
+          </div>
+          <svg viewBox="0 0 600 90" width="100%" height="80" style="display:block;">
+            <path d="M10,54 L110,60 L200,38 L300,46 L390,26 L480,32 L580,12 L580,90 L10,90 Z" fill="rgba(46,107,66,0.10)"/>
+            <path d="M10,54 L110,60 L200,38 L300,46 L390,26 L480,32 L580,12" fill="none" stroke="#2E6B42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="580" cy="12" r="4" fill="#2E6B42"/>
+          </svg>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid #F6E8CC; border-radius:24px; padding:26px; display:flex; flex-direction:column; gap:18px; box-shadow:0 12px 26px rgba(74,68,56,0.07);">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="width:60px; height:60px; border-radius:18px; background:#F6E8CC; display:flex; align-items:center; justify-content:center; flex-shrink:0; transform:rotate(-4deg);">
+            <svg width="27" height="27" viewBox="0 0 24 24" fill="none">
+              <path d="M7 4h10M7 20h10" stroke="#B8811F" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 4c0 4.5 3 6 4 7 1-1 4-2.5 4-7M8 20c0-4.5 3-6 4-7 1 1 4 2.5 4 7" stroke="#B8811F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; flex:1;">
+            <div style="font-size:19px; font-weight:600; color:#4A4438;">Wall Sit Ladder</div>
+            <div style="display:inline-flex; width:fit-content; font-size:11px; font-weight:600; padding:3px 10px; border-radius:999px; background:#F6E8CC; color:#B8811F;">Mobeta</div>
+          </div>
+          <div style="font-size:12px; color:#9A8F7C; text-align:right;">Last logged<br>Feb 28</div>
+        </div>
+        <div style="background:#FBFBF6; border:1px solid #F6E8CC; border-radius:16px; padding:14px 18px 10px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;">
+            <div style="font-size:11px; color:#9A8F7C; font-weight:600; text-transform:uppercase; letter-spacing:0.04em;">Hold time &middot; last 4</div>
+            <div style="font-size:13px; color:#B8811F; font-weight:600;">38s</div>
+          </div>
+          <svg viewBox="0 0 600 90" width="100%" height="80" style="display:block;">
+            <path d="M10,68 L170,58 L340,64 L580,40 L580,90 L10,90 Z" fill="rgba(217,154,54,0.12)"/>
+            <path d="M10,68 L170,58 L340,64 L580,40" fill="none" stroke="#D99A36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="580" cy="40" r="4" fill="#D99A36"/>
+          </svg>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid #E4F0E6; border-radius:24px; padding:26px; display:flex; flex-direction:column; gap:18px; box-shadow:0 12px 26px rgba(74,68,56,0.07);">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="width:60px; height:60px; border-radius:18px; background:#E4F0E6; display:flex; align-items:center; justify-content:center; flex-shrink:0; transform:rotate(-3deg);">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="9" width="3.4" height="6" rx="1.7" fill="#2E6B42"/>
+              <rect x="18.6" y="9" width="3.4" height="6" rx="1.7" fill="#2E6B42"/>
+              <rect x="5.6" y="7.2" width="2.6" height="9.6" rx="1.3" fill="#2E6B42"/>
+              <rect x="15.8" y="7.2" width="2.6" height="9.6" rx="1.3" fill="#2E6B42"/>
+              <rect x="8.2" y="11" width="7.6" height="2" rx="1" fill="#2E6B42"/>
+            </svg>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; flex:1;">
+            <div style="font-size:19px; font-weight:600; color:#4A4438;">Pull Day</div>
+            <div style="display:inline-flex; width:fit-content; font-size:11px; font-weight:600; padding:3px 10px; border-radius:999px; background:#E4F0E6; color:#2E6B42;">Isotonic</div>
+          </div>
+          <div style="font-size:12px; color:#9A8F7C; text-align:right;">Last logged<br>Feb 27</div>
+        </div>
+        <div style="background:#FBFBF6; border:1px solid #E4F0E6; border-radius:16px; padding:14px 18px 10px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;">
+            <div style="font-size:11px; color:#9A8F7C; font-weight:600; text-transform:uppercase; letter-spacing:0.04em;">Volume &middot; last 7</div>
+            <div style="font-size:13px; color:#2E6B42; font-weight:600;">4,480 lb</div>
+          </div>
+          <svg viewBox="0 0 600 90" width="100%" height="80" style="display:block;">
+            <path d="M10,30 L110,42 L200,36 L300,54 L390,50 L480,62 L580,58 L580,90 L10,90 Z" fill="rgba(46,107,66,0.10)"/>
+            <path d="M10,30 L110,42 L200,36 L300,54 L390,50 L480,62 L580,58" fill="none" stroke="#2E6B42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="580" cy="58" r="4" fill="#2E6B42"/>
+          </svg>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid #F6E8CC; border-radius:24px; padding:26px; display:flex; flex-direction:column; gap:18px; box-shadow:0 12px 26px rgba(74,68,56,0.07);">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="width:60px; height:60px; border-radius:18px; background:#F6E8CC; display:flex; align-items:center; justify-content:center; flex-shrink:0; transform:rotate(6deg);">
+            <svg width="27" height="27" viewBox="0 0 24 24" fill="none">
+              <path d="M7 4h10M7 20h10" stroke="#B8811F" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 4c0 4.5 3 6 4 7 1-1 4-2.5 4-7M8 20c0-4.5 3-6 4-7 1 1 4 2.5 4 7" stroke="#B8811F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; flex:1;">
+            <div style="font-size:19px; font-weight:600; color:#4A4438;">Core Hold Circuit</div>
+            <div style="display:inline-flex; width:fit-content; font-size:11px; font-weight:600; padding:3px 10px; border-radius:999px; background:#F6E8CC; color:#B8811F;">Mobeta</div>
+          </div>
+          <div style="font-size:12px; color:#9A8F7C; text-align:right;">Last logged<br>Feb 24</div>
+        </div>
+        <div style="background:#FBFBF6; border:1px solid #F6E8CC; border-radius:16px; padding:14px 18px 10px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;">
+            <div style="font-size:11px; color:#9A8F7C; font-weight:600; text-transform:uppercase; letter-spacing:0.04em;">Hold time &middot; last 5</div>
+            <div style="font-size:13px; color:#B8811F; font-weight:600;">52s</div>
+          </div>
+          <svg viewBox="0 0 600 90" width="100%" height="80" style="display:block;">
+            <path d="M10,42 L140,52 L280,34 L420,44 L580,24 L580,90 L10,90 Z" fill="rgba(217,154,54,0.12)"/>
+            <path d="M10,42 L140,52 L280,34 L420,44 L580,24" fill="none" stroke="#D99A36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="580" cy="24" r="4" fill="#D99A36"/>
+          </svg>
+        </div>
+      </div>
+
+      <div style="grid-column: span 2; border:1.5px dashed #C9BDA6; border-radius:24px; display:flex; align-items:center; justify-content:center; gap:14px; min-height:88px; color:#9A8F7C;">
+        <div style="width:40px; height:40px; border-radius:12px; background:#E4F0E6; display:flex; align-items:center; justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#6F9445" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </div>
+        <div style="font-size:14px; font-weight:500;">Start a new workout</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

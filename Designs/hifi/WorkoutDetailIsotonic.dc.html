@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #2E6B42; text-decoration: none; }
+    a:hover { color: #3E8352; }
+  </style>
+</helmet>
+
+<div style="width:1440px; height:1040px; background:#FDF6EA; font-family:'Fredoka', system-ui, -apple-system, 'Segoe UI', sans-serif; color:#4A4438; display:flex; flex-direction:column;">
+
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:20px 48px; border-bottom:1px solid #C9BDA6;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="9" width="3" height="6" rx="1" fill="#2E6B42"/>
+        <rect x="19" y="9" width="3" height="6" rx="1" fill="#2E6B42"/>
+        <rect x="5" y="7" width="2.5" height="10" rx="1" fill="#6F9445"/>
+        <rect x="16.5" y="7" width="2.5" height="10" rx="1" fill="#6F9445"/>
+        <rect x="7.5" y="11" width="9" height="2" rx="1" fill="#7D7261"/>
+      </svg>
+      <div style="font-weight:700; font-size:20px; color:#2E6B42;">TrainingGPT</div>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px;">
+      <a href="#" style="color:#7D7261; font-size:14px; font-weight:500;">Workouts</a>
+      <div style="width:36px; height:36px; border-radius:999px; background:#E4F0E6; border:1px solid #C9BDA6; display:flex; align-items:center; justify-content:center; color:#7D7261; font-size:13px; font-weight:600;">JL</div>
+    </div>
+  </div>
+
+  <div style="flex:1; display:flex; flex-direction:column; gap:28px; padding:36px 48px;">
+
+    <div style="display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <a href="#" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:10px; border:1px solid #C9BDA6; color:#7D7261;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#7D7261" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div style="display:flex; flex-direction:column; gap:4px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="font-size:24px; font-weight:600; color:#4A4438;">Push Day</div>
+            <div style="font-size:11px; font-weight:600; padding:4px 10px; border-radius:999px; background:rgba(46,107,66,0.14); color:#2E6B42; border:1px solid rgba(46,107,66,0.35);">ISOTONIC</div>
+          </div>
+          <div style="font-size:13px; color:#7D7261;">18 sets logged &middot; last set Mar 6</div>
+        </div>
+      </div>
+      <button style="background:#2E6B42; color:#ffffff; border:none; border-radius:10px; padding:12px 20px; font-size:14px; font-weight:600; font-family:inherit; cursor:pointer; display:flex; align-items:center; gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+        Log Set
+      </button>
+    </div>
+
+    <div style="background:#FFFFFF; border:1px solid #C9BDA6; border-radius:16px; overflow:hidden;">
+      <div style="padding:18px 24px; border-bottom:1px solid #E4F0E6; display:flex; align-items:center; justify-content:space-between;">
+        <div style="font-size:16px; font-weight:600;">Training Log</div>
+        <div style="font-size:13px; color:#9A8F7C;">18 sets logged</div>
+      </div>
+      <div style="display:grid; grid-template-columns:110px 1fr 130px 110px 120px; gap:16px; padding:10px 24px; font-size:11px; color:#9A8F7C; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; border-bottom:1px solid #E4F0E6;">
+        <div>Date</div><div>Exercise</div><div>Sets &times; Reps</div><div>Weight</div><div>Volume</div>
+      </div>
+      <div style="display:flex; flex-direction:column;">
+        <div style="display:grid; grid-template-columns:110px 1fr 130px 110px 120px; gap:16px; padding:13px 24px; font-size:14px; border-bottom:1px solid #E4F0E6;">
+          <div style="color:#9A8F7C;">Mar 6</div><div>Bench Press</div><div>4 &times; 8</div><div>185 lb</div><div>5,920 lb</div>
+        </div>
+        <div style="display:grid; grid-template-columns:110px 1fr 130px 110px 120px; gap:16px; padding:13px 24px; font-size:14px; border-bottom:1px solid #E4F0E6;">
+          <div style="color:#9A8F7C;">Mar 6</div><div>Incline DB Press</div><div>3 &times; 10</div><div>65 lb</div><div>1,950 lb</div>
+        </div>
+        <div style="display:grid; grid-template-columns:110px 1fr 130px 110px 120px; gap:16px; padding:13px 24px; font-size:14px; border-bottom:1px solid #E4F0E6;">
+          <div style="color:#9A8F7C;">Mar 4</div><div>Overhead Press</div><div>4 &times; 6</div><div>105 lb</div><div>2,520 lb</div>
+        </div>
+        <div style="display:grid; grid-template-columns:110px 1fr 130px 110px 120px; gap:16px; padding:13px 24px; font-size:14px; border-bottom:1px solid #E4F0E6;">
+          <div style="color:#9A8F7C;">Mar 4</div><div>Tricep Pushdown</div><div>3 &times; 12</div><div>50 lb</div><div>1,800 lb</div>
+        </div>
+        <div style="display:grid; grid-template-columns:110px 1fr 130px 110px 120px; gap:16px; padding:13px 24px; font-size:14px;">
+          <div style="color:#9A8F7C;">Mar 1</div><div>Bench Press</div><div>4 &times; 8</div><div>180 lb</div><div>5,760 lb</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+
+      <div style="background:#FFFFFF; border:1px solid #C9BDA6; border-radius:16px; padding:22px 24px; display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <div style="font-size:14px; font-weight:600;">Volume by Day</div>
+          <div style="font-size:12px; color:#9A8F7C;">Last 7 sessions</div>
+        </div>
+        <svg viewBox="0 0 560 200" width="100%" height="200" style="overflow:visible;">
+          <line x1="0" y1="10" x2="560" y2="10" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <line x1="0" y1="70" x2="560" y2="70" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <line x1="0" y1="130" x2="560" y2="130" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <line x1="0" y1="180" x2="560" y2="180" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <path d="M20,150 L110,138 L200,142 L290,98 L380,84 L470,52 L540,36" fill="none" stroke="#2E6B42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="150" r="4" fill="#2E6B42"/>
+          <circle cx="110" cy="138" r="4" fill="#2E6B42"/>
+          <circle cx="200" cy="142" r="4" fill="#2E6B42"/>
+          <circle cx="290" cy="98" r="4" fill="#2E6B42"/>
+          <circle cx="380" cy="84" r="5.5" fill="#FFFFFF" stroke="#2E6B42" stroke-width="2"/>
+          <circle cx="470" cy="52" r="4" fill="#2E6B42"/>
+          <circle cx="540" cy="36" r="4" fill="#2E6B42"/>
+          <line x1="380" y1="0" x2="380" y2="180" stroke="#B3A78F" stroke-width="1" stroke-dasharray="3,3"/>
+          <g transform="translate(320,4)">
+            <rect width="122" height="42" rx="8" fill="#E4F0E6" stroke="#C9BDA6"/>
+            <text x="12" y="18" fill="#7D7261" font-size="11" font-family="Fredoka, sans-serif">Wed, Mar 4</text>
+            <text x="12" y="34" fill="#4A4438" font-size="13" font-weight="600" font-family="Fredoka, sans-serif">4,320 lb</text>
+          </g>
+          <text x="20" y="196" fill="#9A8F7C" font-size="11" font-family="Fredoka, sans-serif">Feb 25</text>
+          <text x="540" y="196" fill="#9A8F7C" font-size="11" font-family="Fredoka, sans-serif" text-anchor="end">Mar 6</text>
+        </svg>
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid #C9BDA6; border-radius:16px; padding:22px 24px; display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <div style="font-size:14px; font-weight:600;">Intensity by Day</div>
+          <div style="font-size:12px; color:#9A8F7C;">Avg % of 1RM</div>
+        </div>
+        <svg viewBox="0 0 560 200" width="100%" height="200" style="overflow:visible;">
+          <line x1="0" y1="10" x2="560" y2="10" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <line x1="0" y1="70" x2="560" y2="70" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <line x1="0" y1="130" x2="560" y2="130" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <line x1="0" y1="180" x2="560" y2="180" stroke="#C9BDA6" stroke-width="1" opacity="0.5"/>
+          <path d="M20,120 L110,110 L200,128 L290,90 L380,96 L470,70 L540,58" fill="none" stroke="#6F9445" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="120" r="4" fill="#6F9445"/>
+          <circle cx="110" cy="110" r="4" fill="#6F9445"/>
+          <circle cx="200" cy="128" r="4" fill="#6F9445"/>
+          <circle cx="290" cy="90" r="4" fill="#6F9445"/>
+          <circle cx="380" cy="96" r="4" fill="#6F9445"/>
+          <circle cx="470" cy="70" r="5.5" fill="#FFFFFF" stroke="#6F9445" stroke-width="2"/>
+          <circle cx="540" cy="58" r="4" fill="#6F9445"/>
+          <line x1="470" y1="0" x2="470" y2="180" stroke="#B3A78F" stroke-width="1" stroke-dasharray="3,3"/>
+          <g transform="translate(392,4)">
+            <rect width="122" height="42" rx="8" fill="#E4F0E6" stroke="#C9BDA6"/>
+            <text x="12" y="18" fill="#7D7261" font-size="11" font-family="Fredoka, sans-serif">Sat, Mar 1</text>
+            <text x="12" y="34" fill="#4A4438" font-size="13" font-weight="600" font-family="Fredoka, sans-serif">81% of 1RM</text>
+          </g>
+          <text x="20" y="196" fill="#9A8F7C" font-size="11" font-family="Fredoka, sans-serif">Feb 25</text>
+          <text x="540" y="196" fill="#9A8F7C" font-size="11" font-family="Fredoka, sans-serif" text-anchor="end">Mar 6</text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

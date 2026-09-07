@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #2E6B42; text-decoration: none; }
+    a:hover { color: #3E8352; }
+    input::placeholder { color: #9A8F7C; }
+  </style>
+</helmet>
+
+<div style="width:1440px; height:860px; background:#FDF6EA; font-family:'Fredoka', system-ui, -apple-system, 'Segoe UI', sans-serif; color:#4A4438; display:flex; flex-direction:column;">
+
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:20px 48px; border-bottom:1px solid #C9BDA6;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="9" width="3" height="6" rx="1" fill="#2E6B42"/>
+        <rect x="19" y="9" width="3" height="6" rx="1" fill="#2E6B42"/>
+        <rect x="5" y="7" width="2.5" height="10" rx="1" fill="#6F9445"/>
+        <rect x="16.5" y="7" width="2.5" height="10" rx="1" fill="#6F9445"/>
+        <rect x="7.5" y="11" width="9" height="2" rx="1" fill="#7D7261"/>
+      </svg>
+      <div style="font-weight:700; font-size:20px; color:#2E6B42;">TrainingGPT</div>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px;">
+      <a href="#" style="color:#7D7261; font-size:14px; font-weight:500;">Workouts</a>
+      <div style="width:36px; height:36px; border-radius:999px; background:#E4F0E6; border:1px solid #C9BDA6; display:flex; align-items:center; justify-content:center; color:#7D7261; font-size:13px; font-weight:600;">JL</div>
+    </div>
+  </div>
+
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:24px; padding:36px 48px;">
+
+    <div style="width:640px; display:flex; align-items:center; gap:14px;">
+      <a href="#" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:10px; border:1px solid #C9BDA6; color:#7D7261; flex-shrink:0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#7D7261" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div style="display:flex; flex-direction:column; gap:2px;">
+        <div style="font-size:20px; font-weight:600;">Log a Hold</div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="font-size:13px; color:#7D7261;">Plank Series</div>
+          <div style="font-size:10px; font-weight:600; padding:3px 8px; border-radius:999px; background:rgba(217,154,54,0.16); color:#B8811F; border:1px solid rgba(217,154,54,0.4);">MOBETA</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:640px; background:#FFFFFF; border:1px solid #C9BDA6; border-radius:16px; padding:32px; display:flex; flex-direction:column; gap:24px;">
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <label style="font-size:13px; font-weight:500; color:#7D7261;">Hold / Exercise</label>
+        <input type="text" value="Plank" style="background:#FDF6EA; border:1px solid #C9BDA6; border-radius:10px; padding:12px 16px; color:#4A4438; font-size:15px; font-family:inherit; outline:none;">
+      </div>
+
+      <div style="display:flex; flex-direction:column; align-items:center; gap:16px; padding:28px; background:#FDF6EA; border:1px solid #E4F0E6; border-radius:14px;">
+        <div style="font-size:12px; font-weight:600; color:#9A8F7C; text-transform:uppercase; letter-spacing:0.06em;">Time Held</div>
+        <div style="font-size:52px; font-weight:600; letter-spacing:0.01em; color:#B8811F; font-variant-numeric:tabular-nums;">00:47</div>
+        <div style="display:flex; gap:10px;">
+          <button style="background:transparent; border:1px solid #B3A78F; color:#7D7261; border-radius:10px; padding:10px 18px; font-size:13px; font-weight:600; font-family:inherit; cursor:pointer;">Reset</button>
+          <button style="background:#B8811F; color:#ffffff; border:none; border-radius:10px; padding:10px 22px; font-size:13px; font-weight:600; font-family:inherit; cursor:pointer;">Stop</button>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <label style="font-size:13px; font-weight:500; color:#7D7261;">Added weight (lb)</label>
+          <input type="text" value="22.5" style="background:#FDF6EA; border:1px solid #C9BDA6; border-radius:10px; padding:12px 16px; color:#4A4438; font-size:15px; font-family:inherit; outline:none;">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <label style="font-size:13px; font-weight:500; color:#7D7261;">Date</label>
+          <input type="text" value="Mar 5, 2026" style="background:#FDF6EA; border:1px solid #C9BDA6; border-radius:10px; padding:12px 16px; color:#4A4438; font-size:15px; font-family:inherit; outline:none;">
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <label style="font-size:13px; font-weight:500; color:#7D7261;">Notes (optional)</label>
+        <textarea placeholder="Shook near the end but held form." style="background:#FDF6EA; border:1px solid #C9BDA6; border-radius:10px; padding:12px 16px; color:#4A4438; font-size:14px; font-family:inherit; outline:none; height:64px; resize:none;"></textarea>
+      </div>
+
+      <button style="background:#B8811F; color:#ffffff; border:none; border-radius:10px; padding:13px 20px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">Save Hold</button>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>
