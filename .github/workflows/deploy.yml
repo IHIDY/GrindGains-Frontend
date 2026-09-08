@@ -33,17 +33,6 @@ jobs:
           VITE_COGNITO_REGION: ${{ secrets.VITE_COGNITO_REGION }}
         run: npm run build
 
-      - name: Debug OIDC token claims
-        run: |
-          IDTOKEN=$(curl -sf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" | jq -r '.value')
-          python3 -c "
-          import base64, json
-          payload = '''$IDTOKEN'''.split('.')[1]
-          payload += '=' * (-len(payload) % 4)
-          claims = json.loads(base64.urlsafe_b64decode(payload))
-          print(json.dumps({k: claims[k] for k in ('sub', 'aud', 'repository', 'repository_owner', 'ref') if k in claims}, indent=2))
-          "
-
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
