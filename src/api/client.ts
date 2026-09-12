@@ -10,6 +10,8 @@ interface RawLogEntry {
   weight: number
   reps_or_time: number
   sets: number
+  /** Not in the documented schema yet - present only once the backend adds support. */
+  rpe?: number
 }
 
 function normalizeEntry(raw: RawLogEntry): LogEntry {
@@ -20,6 +22,7 @@ function normalizeEntry(raw: RawLogEntry): LogEntry {
     repsOrTime: raw.reps_or_time,
     sets: raw.sets,
     timestamp: raw.timestamp,
+    rpe: raw.rpe,
   }
 }
 
@@ -61,6 +64,8 @@ export interface LogEntryPayload {
   weight: number
   repsOrTime: number
   sets?: number
+  /** Sent optimistically - see the `rpe` note on LogEntry. Omit if not collected. */
+  rpe?: number
 }
 
 export const api = {
@@ -74,6 +79,7 @@ export const api = {
         weight: entry.weight,
         reps_or_time: entry.repsOrTime,
         sets: entry.sets ?? 1,
+        ...(entry.rpe !== undefined ? { rpe: entry.rpe } : {}),
       }),
     })
     return normalizeEntry(raw)
