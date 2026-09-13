@@ -68,6 +68,17 @@ export interface LogEntryPayload {
   rpe?: number
 }
 
+/**
+ * NOT YET SUPPORTED by the backend - it currently only handles POST (create) and GET
+ * (read). `timestamp` (from the entry's SK) is the natural unique key to identify
+ * which entry to overwrite; a PUT full-replace is proposed rather than a partial PATCH
+ * since it mirrors POST's body shape exactly (just adds `timestamp`) and is simplest to
+ * implement as a DynamoDB PutItem with a ConditionExpression on the existing SK.
+ */
+export interface UpdateEntryPayload extends LogEntryPayload {
+  timestamp: string
+}
+
 export const api = {
   logEntry: async (token: string, entry: LogEntryPayload): Promise<LogEntry> => {
     const raw = await request<RawLogEntry>("", {
@@ -75,6 +86,24 @@ export const api = {
       token,
       body: JSON.stringify({
         movement_id: entry.movementId,
+        mode: entry.mode,
+        weight: entry.weight,
+        reps_or_time: entry.repsOrTime,
+        sets: entry.sets ?? 1,
+        ...(entry.rpe !== undefined ? { rpe: entry.rpe } : {}),
+      }),
+    })
+    return normalizeEntry(raw)
+  },
+
+  /** See the UpdateEntryPayload note - this hits a PUT endpoint the backend doesn't have yet. */
+  updateEntry: async (token: string, entry: UpdateEntryPayload): Promise<LogEntry> => {
+    const raw = await request<RawLogEntry>("", {
+      method: "PUT",
+      token,
+      body: JSON.stringify({
+        movement_id: entry.movementId,
+        timestamp: entry.timestamp,
         mode: entry.mode,
         weight: entry.weight,
         reps_or_time: entry.repsOrTime,

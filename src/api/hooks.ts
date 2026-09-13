@@ -156,3 +156,27 @@ export function useLogEntry() {
 
   return { logEntry, isSubmitting, error }
 }
+
+/** See the UpdateEntryPayload note in api/client.ts - the backend doesn't support this yet. */
+export function useUpdateEntry() {
+  const { getToken } = useAuth()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const updateEntry = async (payload: Parameters<typeof api.updateEntry>[1]) => {
+    setIsSubmitting(true)
+    setError(null)
+    try {
+      const token = await getToken()
+      if (!token) throw new Error("Not authenticated")
+      return await api.updateEntry(token, payload)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to update entry")
+      throw err
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return { updateEntry, isSubmitting, error }
+}

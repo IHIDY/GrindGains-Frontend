@@ -9,7 +9,7 @@ import { TrainingLogTable } from "../components/workouts/TrainingLogTable"
 import { formatShortDate, groupByDay } from "../lib/format"
 
 export function WorkoutDetailIsotonic({ movement }: { movement: Movement }) {
-  const { entries } = useMovementHistory(movement.id)
+  const { entries, refetch } = useMovementHistory(movement.id)
   const chronological = [...entries].reverse()
 
   // Sets are logged one-per-row now (see NewEntryIsotonic), so a single session can
@@ -52,7 +52,7 @@ export function WorkoutDetailIsotonic({ movement }: { movement: Movement }) {
         </Link>
       </div>
 
-      <TrainingLogTable entries={entries} />
+      <TrainingLogTable entries={entries} movementId={movement.id} onUpdated={refetch} />
 
       <div className="grid grid-cols-2 gap-6">
         <div className="flex flex-col gap-3.5 rounded-2xl border border-border bg-card p-[22px]">
