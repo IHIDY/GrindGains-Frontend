@@ -122,6 +122,7 @@ export function NewEntryIsotonic({ movement }: { movement: Movement }) {
                   type="number"
                   min={1}
                   max={10}
+                  step={0.5}
                   placeholder="1-10"
                   value={row.rpe}
                   onChange={(e) => updateRow(i, "rpe", e.target.value)}
