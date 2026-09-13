@@ -6,19 +6,23 @@ import { BackArrowIcon, PlusIcon } from "../components/icons"
 import { PageShell } from "../components/layout/PageShell"
 import { ModeBadge } from "../components/workouts/ModeBadge"
 import { TrainingLogTable } from "../components/workouts/TrainingLogTable"
-import { formatShortDate } from "../lib/format"
+import { formatShortDate, groupByDay } from "../lib/format"
 
 export function WorkoutDetailIsotonic({ movement }: { movement: Movement }) {
   const { entries } = useMovementHistory(movement.id)
   const chronological = [...entries].reverse()
 
-  const volumeData = chronological.map((e) => ({
-    date: formatShortDate(e.timestamp),
-    volume: e.weight * e.repsOrTime * e.sets,
+  // Sets are logged one-per-row now (see NewEntryIsotonic), so a single session can
+  // produce several entries with the same timestamp date - group by calendar day
+  // first so "by day" charts show one point per day, not one per set.
+  const dayGroups = groupByDay(chronological)
+  const volumeData = dayGroups.map(({ rows }) => ({
+    date: formatShortDate(rows[0].timestamp),
+    volume: rows.reduce((sum, e) => sum + e.weight * e.repsOrTime * e.sets, 0),
   }))
-  const weightData = chronological.map((e) => ({
-    date: formatShortDate(e.timestamp),
-    weight: e.weight,
+  const intensityData = dayGroups.map(({ rows }) => ({
+    date: formatShortDate(rows[0].timestamp),
+    weight: rows.reduce((sum, e) => sum + e.weight, 0) / rows.length,
   }))
 
   return (
@@ -67,16 +71,16 @@ export function WorkoutDetailIsotonic({ movement }: { movement: Movement }) {
         </div>
         <div className="flex flex-col gap-3.5 rounded-2xl border border-border bg-card p-[22px]">
           <div className="flex items-center justify-between">
-            <div className="text-sm font-semibold text-ink">Weight by Day</div>
-            <div className="text-xs text-faint">All sessions</div>
+            <div className="text-sm font-semibold text-ink">Intensity by Day</div>
+            <div className="text-xs text-faint">Avg weight per day</div>
           </div>
           <XYChart
-            data={weightData}
+            data={intensityData}
             xKey="date"
             yKey="weight"
             variant="line"
             accentColor="#6F9445"
-            valueFormatter={(v) => `${v} lb`}
+            valueFormatter={(v) => `${Math.round(v)} lb`}
           />
         </div>
       </div>

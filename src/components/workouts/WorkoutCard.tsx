@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import type { MovementSummary } from "../../api/hooks"
-import { formatShortDate } from "../../lib/format"
+import { formatShortDate, groupByDay } from "../../lib/format"
 import { Sparkline } from "../charts/Sparkline"
 import { IconBadge } from "./IconBadge"
 import { ModeBadge } from "./ModeBadge"
@@ -10,14 +10,20 @@ const SPARKLINE_WINDOW = 7
 export function WorkoutCard({ summary, rotationIndex }: { summary: MovementSummary; rotationIndex: number }) {
   const { movement, history } = summary
   const isIsotonic = movement.mode === "isotonic"
+  const chronological = [...history].reverse()
 
-  const recent = [...history].slice(0, SPARKLINE_WINDOW).reverse()
-  const chartData = recent.map((entry, i) => ({
-    x: i,
-    y: isIsotonic ? entry.weight * entry.repsOrTime * entry.sets : entry.repsOrTime,
-  }))
+  // Isotonic sets are logged one-per-row (see NewEntryIsotonic), so several entries
+  // can share a day - group by day first so "last 7" means 7 days of volume, not the
+  // last 7 individual sets.
+  const chartData = isIsotonic
+    ? groupByDay(chronological)
+        .slice(-SPARKLINE_WINDOW)
+        .map((g, i) => ({ x: i, y: g.rows.reduce((sum, e) => sum + e.weight * e.repsOrTime * e.sets, 0) }))
+    : chronological.slice(-SPARKLINE_WINDOW).map((entry, i) => ({ x: i, y: entry.repsOrTime }))
   const currentValue = chartData.length > 0 ? chartData[chartData.length - 1].y : 0
-  const metricLabel = isIsotonic ? `Volume · last ${chartData.length}` : `Hold time · last ${chartData.length}`
+  const metricLabel = isIsotonic
+    ? `Volume · last ${chartData.length} day${chartData.length === 1 ? "" : "s"}`
+    : `Hold time · last ${chartData.length}`
   const valueLabel = isIsotonic ? `${currentValue.toLocaleString()} lb` : `${currentValue}s`
 
   return (
