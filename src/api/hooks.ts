@@ -157,7 +157,6 @@ export function useLogEntry() {
   return { logEntry, isSubmitting, error }
 }
 
-/** See the UpdateEntryPayload note in api/client.ts - the backend doesn't support this yet. */
 export function useUpdateEntry() {
   const { getToken } = useAuth()
   const [isSubmitting, setIsSubmitting] = useState(false)

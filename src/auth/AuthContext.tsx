@@ -11,8 +11,8 @@ interface AuthContextValue {
   /**
    * Always fetches a fresh ID token (amazon-cognito-identity-js transparently refreshes
    * it via the stored refresh token if the cached one is past its 1-hour expiry — see
-   * `README backend.md`'s "ID tokens expire after 1 hour" note). Never cache the return
-   * value across requests; call this right before each API call instead.
+   * the GrindGains-Backend repo's README ("ID tokens expire after 1 hour"). Never cache
+   * the return value across requests; call this right before each API call instead.
    */
   getToken: () => Promise<string | null>
   login: (email: string, password: string) => Promise<void>

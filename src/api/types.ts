@@ -10,12 +10,7 @@ export interface LogEntry {
   sets: number
   /** ISO timestamp. */
   timestamp: string
-  /**
-   * Rate of Perceived Exertion (1-10), per set. NOT YET SUPPORTED by the backend
-   * schema (`README backend.md` only documents movement_id/mode/weight/reps_or_time/sets) -
-   * the frontend sends it optimistically and reads it back if present, but until the
-   * backend adds an `rpe` field to its DynamoDB item shape, this value is not persisted.
-   */
+  /** Rate of Perceived Exertion (1-10), per set. Optional — omitted when not provided. */
   rpe?: number
 }
 
