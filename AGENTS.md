@@ -5,6 +5,10 @@ Read `_docs/plan.md` first — it points to the shared product/technical spec in
 docs in this repo; that already drifted out of date once (see the backend spec's
 "Resolved drift" section) and got deleted.
 
+Before creating or implementing any issue, read `_docs/process.md` (points to the
+shared issue → branch → PR → merge → revert workflow and issue template, both in the
+backend repo).
+
 ## Commands
 
 - `npm run dev` — dev server
