@@ -81,7 +81,24 @@ export function XYChart<T extends Record<string, unknown>>({
   showGrid = !compact,
   height = compact ? 80 : 200,
 }: XYChartProps<T>) {
-  const lastPoint = data[data.length - 1]
+  const lastIndex = data.length - 1
+
+  // Highlights the most recent point with a hollow ring. Drawn as a custom dot on
+  // the Line/Area itself (keyed off its real index) rather than a separate Scatter
+  // fed just `[lastPoint]` - on a category x-axis, Recharts positions a series by
+  // that series' own index, so a single-item Scatter always lands on tick 0 and
+  // also injects a phantom extra category into the shared axis domain.
+  function renderDot(showAllDots: boolean) {
+    return (dotProps: { cx?: number; cy?: number; index?: number }) => {
+      const { cx, cy, index } = dotProps
+      if (cx == null || cy == null || index == null) return <g key={`dot-${index}`} />
+      if (index === lastIndex) {
+        return <circle key={`dot-${index}`} cx={cx} cy={cy} r={5} fill="#FFFFFF" stroke={accentColor} strokeWidth={2} />
+      }
+      if (!showAllDots) return <g key={`dot-${index}`} />
+      return <circle key={`dot-${index}`} cx={cx} cy={cy} r={3} fill={accentColor} strokeWidth={0} />
+    }
+  }
 
   return (
     <ResponsiveContainer width="100%" height={height}>
@@ -122,7 +139,7 @@ export function XYChart<T extends Record<string, unknown>>({
             stroke={accentColor}
             strokeWidth={2}
             fill={withAlpha(accentColor, "1a")}
-            dot={false}
+            dot={compact ? false : renderDot(false)}
             activeDot={{ r: 4, fill: accentColor }}
           />
         )}
@@ -133,7 +150,7 @@ export function XYChart<T extends Record<string, unknown>>({
             dataKey={yKey as any}
             stroke={accentColor}
             strokeWidth={2}
-            dot={{ r: 3, fill: accentColor, strokeWidth: 0 }}
+            dot={compact ? false : renderDot(true)}
             activeDot={{ r: 5, fill: accentColor }}
           />
         )}
@@ -143,10 +160,6 @@ export function XYChart<T extends Record<string, unknown>>({
             <Scatter dataKey={yKey as any} fill={accentColor} fillOpacity={0.85} />
             <Line type="monotone" dataKey={yKey as any} stroke={accentColor} strokeWidth={2} dot={false} activeDot={false} />
           </>
-        )}
-
-        {!compact && lastPoint && variant !== "scatter-trend" && (
-          <Scatter data={[lastPoint]} dataKey={yKey as any} shape="circle" fill="#FFFFFF" stroke={accentColor} strokeWidth={2} />
         )}
       </ComposedChart>
     </ResponsiveContainer>
