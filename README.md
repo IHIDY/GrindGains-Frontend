@@ -98,11 +98,16 @@ Tests cover the formatting helpers (`src/lib/format.ts`) and the API client (`sr
 Pushing to `main` runs `.github/workflows/deploy.yml`:
 
 1. `npm ci`, then a TypeScript type-check
-2. `npm run build` with the `VITE_*` values injected from repository secrets
-3. Assume an AWS IAM role through GitHub's **OIDC** (no long-lived AWS keys are stored)
-4. `aws s3 sync` the build to the hosting bucket, then invalidate the CloudFront cache
+2. `npm test` — a failing test stops the deploy before anything is built or uploaded
+3. `npm run build` with the `VITE_*` values injected from repository secrets
+4. Assume an AWS IAM role through GitHub's **OIDC** (no long-lived AWS keys are stored)
+5. `aws s3 sync` the build to the hosting bucket, then invalidate the CloudFront cache
 
-Required repository secrets: `VITE_API_BASE_URL`, `VITE_COGNITO_USER_POOL_ID`, `VITE_COGNITO_CLIENT_ID`, `VITE_COGNITO_REGION`. The workflow can also be started by hand (`workflow_dispatch`), and `scripts/deploy.sh` does the same build-and-sync from a machine with AWS credentials.
+Required repository secrets: `VITE_API_BASE_URL`, `VITE_COGNITO_USER_POOL_ID`, `VITE_COGNITO_CLIENT_ID`, `VITE_COGNITO_REGION`. The workflow can also be started by hand (`workflow_dispatch`), and `scripts/deploy.sh` does the same build-and-sync from a machine with AWS credentials (it does not run the tests, so run `npm test` first).
+
+### Continuous integration
+
+`.github/workflows/ci.yml` runs the TypeScript type-check and `npm test` (Node 22) on every pull request to `main` and on every push to `main`. It has no AWS access and uses no secrets. A red check means a test or the type-check failed; do not merge until it is green.
 
 ## How this was built
 
