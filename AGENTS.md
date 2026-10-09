@@ -9,6 +9,9 @@ Before creating or implementing any issue, read `_docs/process.md` (points to th
 shared issue → branch → PR → merge → revert workflow and issue template, both in the
 backend repo).
 
+Before writing or changing tests, read `_docs/testing-guidelines.md` in the
+`GrindGains-Backend` repo (the shared testing guide; not copied here).
+
 ## Commands
 
 - `npm run dev` — dev server
