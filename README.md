@@ -60,7 +60,7 @@ Routes: `/login`, `/signup`, `/workouts`, `/workouts/:id`, `/workouts/:id/log` (
 
 ## Getting started
 
-Requirements: Node.js (CI uses 22) and npm, plus a deployed backend (or access to the existing one).
+Requirements: **Node.js 22** (what CI uses) and npm, plus a deployed backend (or access to the existing one). Older setups such as Node 20.14 with npm 10.7 can fail `npm ci` with "Cannot find native binding" because of an npm bug with optional dependencies; use Node 22.
 
 ```bash
 git clone https://github.com/IHIDY/GrindGains-Frontend.git
