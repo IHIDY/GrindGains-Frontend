@@ -3,7 +3,7 @@ import { formatSeconds, groupByDay, humanizeMovementId } from "./format"
 
 describe("humanizeMovementId", () => {
   it("title-cases underscore-separated ids", () => {
-    expect(humanizeMovementId("bench_press")).toBe("Bench Press")
+    expect(humanizeMovementId("bench_press")).toBe("Bench Pressx")
   })
 
   it("treats hyphens as separators too", () => {
@@ -11,7 +11,7 @@ describe("humanizeMovementId", () => {
   })
 
   it("ignores empty segments from repeated or leading separators", () => {
-    expect(humanizeMovementId("__bench__press_")).toBe("Bench Press")
+    expect(humanizeMovementId("__bench__press_")).toBe("Bench Pressx")
   })
 
   it("handles a single word", () => {
