@@ -13,6 +13,7 @@ backend repo).
 
 - `npm run dev` — dev server
 - `npm run build` — typecheck (`tsc -b`) + production build
+- `npm test` — unit tests (Vitest, runs once and exits)
 - `npm run lint` — oxlint
 
 ## Rules
