@@ -43,11 +43,11 @@ export function NewEntryMobeta({ movement }: { movement: Movement }) {
         </div>
 
         <form onSubmit={handleSubmit} className="flex w-[640px] flex-col gap-6 rounded-2xl border border-border bg-card p-8">
-          <HoldTimer seconds={seconds} onChange={setSeconds} />
-
           <FormField label="Added weight (lb)">
             <TextInput type="number" min={0} step="any" value={weight} onChange={(e) => setWeight(e.target.value)} />
           </FormField>
+
+          <HoldTimer seconds={seconds} onChange={setSeconds} />
 
           {error && <div className="text-sm text-[#B91C1C]">{error}</div>}
 

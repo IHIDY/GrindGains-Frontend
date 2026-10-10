@@ -91,7 +91,7 @@ Environment variables (Vite only exposes names starting with `VITE_`):
 | `npm run build` | Type-check (`tsc -b`) and build to `dist/` |
 | `npm run preview` | Serve the production build locally |
 
-Tests cover the formatting helpers (`src/lib/format.ts`) and the API client (`src/api/client.ts`) with `fetch` mocked, so they need no network or backend.
+Tests cover the formatting helpers (`src/lib/format.ts`), the API client (`src/api/client.ts`) with `fetch` mocked, and the set/hold entry forms and the training log table (rendered with jsdom and React Testing Library, with the data hooks mocked), so they need no network or backend.
 
 ## Deployment
 
