@@ -94,8 +94,8 @@ export function NewEntryIsotonic({ movement }: { movement: Movement }) {
 
             <div className="grid grid-cols-[28px_1fr_1fr_1fr_28px] items-center gap-2.5 px-1 text-[11px] font-semibold uppercase tracking-wide text-faint">
               <div />
-              <div>Reps</div>
               <div>Weight (lb)</div>
+              <div>Reps</div>
               <div>RPE</div>
               <div />
             </div>
@@ -106,17 +106,17 @@ export function NewEntryIsotonic({ movement }: { movement: Movement }) {
                 <TextInput
                   type="number"
                   required
-                  min={1}
-                  value={row.reps}
-                  onChange={(e) => updateRow(i, "reps", e.target.value)}
-                />
-                <TextInput
-                  type="number"
-                  required
                   min={0}
                   step="any"
                   value={row.weight}
                   onChange={(e) => updateRow(i, "weight", e.target.value)}
+                />
+                <TextInput
+                  type="number"
+                  required
+                  min={1}
+                  value={row.reps}
+                  onChange={(e) => updateRow(i, "reps", e.target.value)}
                 />
                 <TextInput
                   type="number"

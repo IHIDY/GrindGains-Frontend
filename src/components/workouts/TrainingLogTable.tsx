@@ -3,7 +3,7 @@ import { useUpdateEntry } from "../../api/hooks"
 import type { LogEntry } from "../../api/types"
 import { formatShortDate } from "../../lib/format"
 
-const COLUMNS = "110px 1fr 110px 80px 120px 130px"
+const COLUMNS = "110px 110px 1fr 80px 120px 130px"
 
 interface EditDraft {
   reps: string
@@ -59,8 +59,8 @@ export function TrainingLogTable({
         style={{ gridTemplateColumns: COLUMNS }}
       >
         <div>Date</div>
-        <div>Sets &times; Reps</div>
         <div>Weight</div>
+        <div>Sets &times; Reps</div>
         <div>RPE</div>
         <div>Volume</div>
         <div />
@@ -81,6 +81,14 @@ export function TrainingLogTable({
 
               {isEditing ? (
                 <>
+                  <input
+                    type="number"
+                    min={0}
+                    step="any"
+                    className={inputClass}
+                    value={draft.weight}
+                    onChange={(e) => setDraft((d) => ({ ...d, weight: e.target.value }))}
+                  />
                   <div className="flex items-center gap-1.5">
                     <span className="flex-shrink-0">{entry.sets} &times;</span>
                     <input
@@ -91,14 +99,6 @@ export function TrainingLogTable({
                       onChange={(e) => setDraft((d) => ({ ...d, reps: e.target.value }))}
                     />
                   </div>
-                  <input
-                    type="number"
-                    min={0}
-                    step="any"
-                    className={inputClass}
-                    value={draft.weight}
-                    onChange={(e) => setDraft((d) => ({ ...d, weight: e.target.value }))}
-                  />
                   <input
                     type="number"
                     min={1}
@@ -129,10 +129,10 @@ export function TrainingLogTable({
                 </>
               ) : (
                 <>
+                  <div>{entry.weight} lb</div>
                   <div>
                     {entry.sets} &times; {entry.repsOrTime}
                   </div>
-                  <div>{entry.weight} lb</div>
                   <div className="text-faint">{entry.rpe ?? "—"}</div>
                   <div>{(entry.weight * entry.repsOrTime * entry.sets).toLocaleString()} lb</div>
                   <button type="button" onClick={() => startEdit(entry)} className="text-left text-xs font-semibold text-isotonic">
