@@ -16,18 +16,6 @@ vi.mock("../components/layout/PageShell", () => ({
   PageShell: ({ children }: { children: ReactNode }) => <div>{children}</div>,
 }))
 
-// The real timer counts on a 1s interval; this stand-in sets the seconds on demand.
-vi.mock("../components/forms/HoldTimer", () => ({
-  HoldTimer: ({ onChange }: { onChange: (seconds: number) => void }) => (
-    <div>
-      <div>Time Held</div>
-      <button type="button" onClick={() => onChange(42)}>
-        Set 42s
-      </button>
-    </div>
-  ),
-}))
-
 import { NewEntryMobeta } from "./NewEntryMobeta"
 
 const movement: Movement = {
@@ -50,6 +38,10 @@ function comesBefore(a: HTMLElement, b: HTMLElement) {
   return Boolean(a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING)
 }
 
+function saveButton() {
+  return screen.getByRole("button", { name: "Save Hold" }) as HTMLButtonElement
+}
+
 beforeEach(() => {
   logEntry.mockReset()
   logEntry.mockResolvedValue({})
@@ -58,18 +50,28 @@ beforeEach(() => {
 afterEach(cleanup)
 
 describe("NewEntryMobeta", () => {
-  it("shows the Added weight field before the hold timer", () => {
+  it("shows the Added weight field before the Time (s) field", () => {
     renderForm()
 
-    expect(comesBefore(screen.getByText("Added weight (lb)"), screen.getByText("Time Held"))).toBe(true)
+    expect(comesBefore(screen.getByText("Added weight (lb)"), screen.getByText("Time (s)"))).toBe(true)
   })
 
-  it("saves the entered weight and the timed seconds to the right fields", async () => {
+  it("has no stopwatch", () => {
     renderForm()
 
-    fireEvent.change(screen.getByRole("spinbutton"), { target: { value: "25" } })
-    fireEvent.click(screen.getByRole("button", { name: "Set 42s" }))
-    fireEvent.click(screen.getByRole("button", { name: "Save Hold" }))
+    for (const name of ["Start", "Stop", "Reset"]) {
+      expect(screen.queryByRole("button", { name })).toBeNull()
+    }
+    expect(screen.queryByText("Time Held")).toBeNull()
+  })
+
+  it("logs the typed weight and time to the right fields", async () => {
+    renderForm()
+
+    const [weight, time] = screen.getAllByRole("spinbutton")
+    fireEvent.change(weight, { target: { value: "25" } })
+    fireEvent.change(time, { target: { value: "42" } })
+    fireEvent.click(saveButton())
 
     await waitFor(() => expect(logEntry).toHaveBeenCalledTimes(1))
     expect(logEntry).toHaveBeenCalledWith(
@@ -81,5 +83,28 @@ describe("NewEntryMobeta", () => {
         sets: 1,
       }),
     )
+  })
+
+  it("logs weight 0 when the weight is left empty", async () => {
+    renderForm()
+
+    const [, time] = screen.getAllByRole("spinbutton")
+    fireEvent.change(time, { target: { value: "30" } })
+    fireEvent.click(saveButton())
+
+    await waitFor(() => expect(logEntry).toHaveBeenCalledTimes(1))
+    expect(logEntry).toHaveBeenCalledWith(expect.objectContaining({ weight: 0, repsOrTime: 30 }))
+  })
+
+  it("keeps Save disabled until a time greater than 0 is entered", () => {
+    renderForm()
+    expect(saveButton().disabled).toBe(true)
+
+    const [, time] = screen.getAllByRole("spinbutton")
+    fireEvent.change(time, { target: { value: "0" } })
+    expect(saveButton().disabled).toBe(true)
+
+    fireEvent.change(time, { target: { value: "42" } })
+    expect(saveButton().disabled).toBe(false)
   })
 })
