@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom"
 import { useLogEntry } from "../api/hooks"
 import type { Movement } from "../api/types"
 import { FormField, TextInput } from "../components/forms/FormField"
-import { HoldTimer } from "../components/forms/HoldTimer"
 import { BackArrowIcon } from "../components/icons"
 import { PageShell } from "../components/layout/PageShell"
 import { ModeBadge } from "../components/workouts/ModeBadge"
@@ -12,7 +11,7 @@ export function NewEntryMobeta({ movement }: { movement: Movement }) {
   const navigate = useNavigate()
   const { logEntry, isSubmitting, error } = useLogEntry()
   const [weight, setWeight] = useState("")
-  const [seconds, setSeconds] = useState(0)
+  const [time, setTime] = useState("")
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -20,7 +19,7 @@ export function NewEntryMobeta({ movement }: { movement: Movement }) {
       movementId: movement.id,
       mode: "mobeta",
       weight: Number(weight) || 0,
-      repsOrTime: seconds,
+      repsOrTime: Number(time),
       sets: 1,
     })
     navigate(`/workouts/${movement.id}`)
@@ -47,13 +46,15 @@ export function NewEntryMobeta({ movement }: { movement: Movement }) {
             <TextInput type="number" min={0} step="any" value={weight} onChange={(e) => setWeight(e.target.value)} />
           </FormField>
 
-          <HoldTimer seconds={seconds} onChange={setSeconds} />
+          <FormField label="Time (s)">
+            <TextInput type="number" required min={1} step="any" value={time} onChange={(e) => setTime(e.target.value)} />
+          </FormField>
 
           {error && <div className="text-sm text-[#B91C1C]">{error}</div>}
 
           <button
             type="submit"
-            disabled={isSubmitting || seconds === 0}
+            disabled={isSubmitting || !(Number(time) > 0)}
             className="rounded-[10px] bg-mobeta-dark px-5 py-3.5 text-[15px] font-semibold text-white disabled:opacity-60"
           >
             {isSubmitting ? "Saving…" : "Save Hold"}

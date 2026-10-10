@@ -17,7 +17,7 @@ This repository is the React single-page app. The API, database and auth live in
 - Log in / log out; sessions persist and ID tokens are refreshed automatically
 - **Workout list**: one card per movement you have logged, plus a "New Workout" form (movement name + mode)
 - **Movement detail**: training log and trend charts (daily volume and average weight for isotonic movements)
-- **Log a set** (reps, weight, optional RPE 1–10) or **log a hold** (built-in timer plus optional added weight)
+- **Log a set** (reps, weight, optional RPE 1–10) or **log a hold** (optional added weight, then the time held, typed in seconds)
 - **Edit a logged set** inline (reps, weight, RPE)
 
 ## Architecture
