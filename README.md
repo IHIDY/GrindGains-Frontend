@@ -36,7 +36,7 @@ AWS Lambda behind a Function URL  ──────────►  DynamoDB (s
 - All backend communication is centralised in `src/api/` (`client.ts` for HTTP, `hooks.ts` for React state, `types.ts` for shared types), so pages never call `fetch` directly.
 - The backend has no "workout" or "session" concept — a *workout* in the UI is one movement, and its history comes from that movement's flat log entries. A movement's mode (isotonic or mobeta) is inferred from its most recent entry.
 
-The API contract, data model and error table live in the backend repository's `README.md`; the product and technical spec is in `GrindGains-Backend/_docs/plan.md`. They are deliberately not copied here so there is a single source of truth.
+The API contract, data model and error table live in the backend repository's `docs/api.md`; the product and technical spec is in `GrindGains-Backend/_docs/plan.md`. They are deliberately not copied here so there is a single source of truth.
 
 ## Tech stack
 
@@ -79,7 +79,7 @@ Environment variables (Vite only exposes names starting with `VITE_`):
 | `VITE_COGNITO_CLIENT_ID` | Cognito app client id (`UserPoolClientId` stack output) |
 | `VITE_COGNITO_REGION` | AWS region of the user pool |
 
-`.env.local` is git-ignored. To create an account you need an invite code; the backend repository explains how to mint them.
+`.env.local` is git-ignored. To create an account you need an invite code; the backend repository's `docs/deploy.md` explains how to mint them.
 
 ## Scripts
 
