@@ -7,7 +7,7 @@ GrindGains is an invite-only personal training tracker. It logs two kinds of wor
 
 Each movement keeps its own history, with trend charts so you can see volume and intensity change over time. There is no coach, feed, or programmed routine — it is a training diary.
 
-**Live app:** https://d5kmvgwcspew2.cloudfront.net/ (sign-up requires an invite code)
+**Live app:** https://grindgains.junfa-li.me/ (sign-up requires an invite code)
 
 This repository is the React single-page app. The API, database and auth live in [GrindGains-Backend](https://github.com/IHIDY/GrindGains-Backend).
 
